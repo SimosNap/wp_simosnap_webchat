@@ -54,6 +54,10 @@ e.g.
 
 No, it's designed to work only with SimosNap IRC network API
 
+### Where i can find support for this plugin ? ###
+
+On our geeks channel at ircs://irc.simosnap.com:6697/#geeks 
+
 ## Screenshots ##
 
 1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
