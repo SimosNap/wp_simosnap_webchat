@@ -1,0 +1,77 @@
+/* Tab Bar */
+.jquery-tab-pager-tabbar {
+  margin: 0px !important;
+  padding: 0px !important;
+  overflow: hidden;
+  display:flex;
+}
+
+.jquery-tab-pager-tabbar li {
+  width:50%;
+  padding: 0.4em 1em;
+  list-style: none;
+  cursor: pointer;
+	font-size:22px;
+
+    position: relative;
+    line-height: normal;
+
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: visible;
+	border: 1px solid #60a1c1;
+    background: #60a1c1;
+    font-weight: normal;
+    color:white;
+	border-radius:0px 4px 0px 0px;
+}
+.jquery-tab-pager-tabbar li:first-child {
+border-radius:4px 0px 0px 0px;
+}
+
+.jquery-tab-pager-tabbar li.current {
+  background: #0082c3;
+  border: 1px solid #0082c3;
+}
+
+/* Page Navigation */
+#jquery-tab-pager-navi {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display:none;
+}
+
+#jquery-tab-pager-navi li {
+  list-style: none;
+  display: inline;
+}
+
+#jquery-tab-pager-navi li a {
+  float: left;
+  display: block;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  background: #fff;
+  -webkit-transition: background 200ms linear;
+  transition: background 200ms linear;
+  border-radius: 3px;
+}
+
+#jquery-tab-pager-navi li:last-child a {
+  margin-right: 0px;
+}
+
+#jquery-tab-pager-navi li a.current,
+#jquery-tab-pager-navi li a.disable,
+#jquery-tab-pager-navi li a:hover {
+  background: #ebebeb;
+  color: #000;
+}
