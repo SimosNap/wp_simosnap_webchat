@@ -688,7 +688,7 @@ class simosnap_irc_widget extends WP_Widget {
 
 	// constructor
 	function simosnap_irc_widget() {
-		parent::WP_Widget(false, $name = __('SimosNap IRC Widget', 'simosnap_irc_widget') );
+		parent::__construct(false, $name = __('SimosNap IRC Widget', 'simosnap_irc_widget') );
 	}
 
 	// widget form creation
