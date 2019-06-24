@@ -588,7 +588,7 @@ class SimosNapSettingsPage
 		printf('<option value="0" %s />Non attivo</option>',
 	            (isset( $this->options['kiwiirc_myradio'] )  &&  ($this->options['kiwiirc_myradio'] == 0 )) ? 'selected="selected"' : ''
 	        );
-		printf('<option value="0" %s />Attivo</option>',
+		printf('<option value="1" %s />Attivo</option>',
 	            (isset( $this->options['kiwiirc_myradio'] )  &&  ($this->options['kiwiirc_myradio'] == 1 )) ? 'selected="selected"' : ''
 	        );
 
