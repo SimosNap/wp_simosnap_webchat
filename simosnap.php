@@ -769,8 +769,6 @@ function chatLogin(){
 	$myradiourl = $options['kiwiirc_myradiourl'];
 	$mystreaming = $options['kiwiirc_mystreaming'];
 	$stateKey = $options['kiwiirc_stateKey'];
-
-
 ?>
 
 <div style="display:block;min-height:196px;height:auto;max-height:auto;">
