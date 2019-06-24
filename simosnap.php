@@ -83,7 +83,7 @@ function simosnap_customize_register( $wp_customize ) {
         'section' => 'colors',
         'label'   => esc_html__( 'Chat login Background', 'theme' ),
     ) ) );
- 
+
     // Sidebar background
     $wp_customize->add_setting( 'tab_current_background', array(
         'default'   => '#0082c3',
@@ -98,11 +98,10 @@ function simosnap_customize_register( $wp_customize ) {
   }
 
   add_action( 'customize_register', 'simosnap_customize_register' );
-  
 
 function simosnap_get_customizer_css() {
     ob_start();
-    
+
     $tab_background = get_theme_mod( 'tab_background', '' );
     if ( ! empty( $tab_background ) ) {
         ?>
@@ -122,7 +121,7 @@ function simosnap_get_customizer_css() {
         }
         <?php
     }
-    
+
     $css = ob_get_clean();
     return $css;
 }
@@ -134,7 +133,7 @@ function simosnap_enqueue_script() {
 
 	wp_enqueue_script('tab-pager', plugins_url( 'js/jquery.tabpager.js', __FILE__ ), array('jquery'));
 	wp_enqueue_script('simosnap', plugins_url( 'js/simosnap.js', __FILE__ ), array('jquery'));
-    wp_enqueue_style( 'tab-pager', get_stylesheet_uri() ); 
+    wp_enqueue_style( 'tab-pager', get_stylesheet_uri() );
     $custom_css = simosnap_get_customizer_css();
     wp_add_inline_style( 'tab-pager', $custom_css );
 }
@@ -163,17 +162,17 @@ class PageTemplater {
 	protected $templates;
 
 	/**
-	 * Returns an instance of this class. 
+	 * Returns an instance of this class.
 	 */
 	public static function get_instance() {
 
 		if ( null == self::$instance ) {
 			self::$instance = new PageTemplater();
-		} 
+		}
 
 		return self::$instance;
 
-	} 
+	}
 
 	/**
 	 * Initializes the plugin by setting filters and administration functions.
@@ -203,16 +202,16 @@ class PageTemplater {
 
 		// Add a filter to the save post to inject out template into the page cache
 		add_filter(
-			'wp_insert_post_data', 
-			array( $this, 'register_project_templates' ) 
+			'wp_insert_post_data',
+			array( $this, 'register_project_templates' )
 		);
 
 
-		// Add a filter to the template include to determine if the page has our 
+		// Add a filter to the template include to determine if the page has our
 		// template assigned and return it's path
 		add_filter(
-			'template_include', 
-			array( $this, 'view_project_template') 
+			'template_include',
+			array( $this, 'view_project_template')
 		);
 
 
@@ -220,8 +219,8 @@ class PageTemplater {
 		$this->templates = array(
 			'chat-template.php' => 'Chat Container',
 		);
-			
-	} 
+
+	}
 
 	/**
 	 * Adds our template to the page dropdown for v4.7+
@@ -242,12 +241,12 @@ class PageTemplater {
 		// Create the key used for the themes cache
 		$cache_key = 'page_templates-' . md5( get_theme_root() . '/' . get_stylesheet() );
 
-		// Retrieve the cache list. 
+		// Retrieve the cache list.
 		// If it doesn't exist, or it's empty prepare an array
 		$templates = wp_get_theme()->get_page_templates();
 		if ( empty( $templates ) ) {
 			$templates = array();
-		} 
+		}
 
 		// New cache, therefore remove the old one
 		wp_cache_delete( $cache_key , 'themes');
@@ -262,13 +261,13 @@ class PageTemplater {
 
 		return $atts;
 
-	} 
+	}
 
 	/**
 	 * Checks if the template is assigned to the page
 	 */
 	public function view_project_template( $template ) {
-		
+
 		// Get global post
 		global $post;
 
@@ -278,13 +277,13 @@ class PageTemplater {
 		}
 
 		// Return default template if we don't have a custom one defined
-		if ( ! isset( $this->templates[get_post_meta( 
-			$post->ID, '_wp_page_template', true 
+		if ( ! isset( $this->templates[get_post_meta(
+			$post->ID, '_wp_page_template', true
 		)] ) ) {
 			return $template;
-		} 
+		}
 
-		$file = plugin_dir_path( __FILE__ ). get_post_meta( 
+		$file = plugin_dir_path( __FILE__ ). get_post_meta(
 			$post->ID, '_wp_page_template', true
 		);
 
@@ -300,7 +299,7 @@ class PageTemplater {
 
 	}
 
-} 
+}
 add_action( 'plugins_loaded', array( 'PageTemplater', 'get_instance' ) );
 
 /*
@@ -409,7 +408,7 @@ class SimosNapSettingsPage
             'simosnap-setting-admin',
             'setting_section_id'
         );
-        
+
         add_settings_field(
             'kiwi_id', // ID
             'ID Client kiwiIRC', // Title
@@ -457,7 +456,7 @@ class SimosNapSettingsPage
             'simosnap-setting-webradio',
             'setting_section_webradio'
         );
-        
+
            add_settings_field(
             'kiwiirc_myradioname',
             'Nome Web Radio:',
@@ -502,7 +501,7 @@ class SimosNapSettingsPage
 
         if( isset( $input['kiwiirc_title'] ) )
             $new_input['kiwiirc_title'] = sanitize_text_field( $input['kiwiirc_title'] );
-            
+
         if( isset( $input['kiwiirc_myradio'] ) )
             $new_input['kiwiirc_myradio'] = absint( $input['kiwiirc_myradio'] );
 
@@ -517,13 +516,13 @@ class SimosNapSettingsPage
 
         if( isset( $input['kiwiirc_theme'] ) )
             $new_input['kiwiirc_theme'] = sanitize_text_field( $input['kiwiirc_theme'] );
-            
+
         if( isset( $input['kiwiirc_layout'] ) )
             $new_input['kiwiirc_layout'] = sanitize_text_field( $input['kiwiirc_layout'] );
 
         if( isset( $input['kiwiirc_target'] ) )
             $new_input['kiwiirc_target'] = sanitize_text_field( $input['kiwiirc_target'] );
-            
+
         return $new_input;
     }
 
@@ -770,8 +769,8 @@ function chatLogin(){
 	$myradiourl = $options['kiwiirc_myradiourl'];
 	$mystreaming = $options['kiwiirc_mystreaming'];
 	$stateKey = $options['kiwiirc_stateKey'];
-	
-	
+
+
 ?>
 
 <div style="display:block;min-height:196px;height:auto;max-height:auto;">
@@ -797,7 +796,7 @@ function chatLogin(){
                                 <label>
                                     <div class="nickerror" style=""><i class="fa fa-exclamation-triangle"></i> Scegli un nickname!</div>
                         			<input id="nickinput" placeholder="Inserisci il tuo nickname ..." type="text" name="nick">
-            
+
                                     <div class="nsnotify" id="nsnotify" style="">Il Nick scelto risulta registrato.</div>
                                     <div id="nspwdlabel" style="display:none">
                             			<input id="nspwd" class="textbox" placeholder="Inserisci la password" type="password" name="password" value="" style="display:none;width:100%;">
@@ -806,7 +805,7 @@ function chatLogin(){
                 			</div>
                 			<div class="chatasl">
                                 <label><input placeholder="Età" type="text" name="age"></label>
-                        		<label>                        		
+                        		<label>
                         		<select class ="select-css" name="sex"><option  selected="selected" value="U">Sono ...</option><option value="M">Uomo</option><option value="F">Donna</option><option value="O">Altro</option></select></label>
                         		<label><input placeholder="Località" type="text" name="location" id="location"></label>
                 			</div>
@@ -823,7 +822,7 @@ function chatLogin(){
                             <input type="hidden" name="radio" value="on">
                             <input type="hidden" name="radioname" value="<?php echo $myradioname; ?>">
                             <input type="hidden" name="radioweb" value="<?php echo $myradiourl; ?>">
-                            <input type="hidden" name="streaming" value="<?php echo $mystreaming; ?>">                      
+                            <input type="hidden" name="streaming" value="<?php echo $mystreaming; ?>">
                             <?php } ?>
                             <input type="hidden" name="stateKey" value="<?php echo $stateKey; ?>">
                             <input type="hidden" name="target" value="<?php echo $target; ?>">
