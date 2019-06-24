@@ -680,10 +680,6 @@ function tfr_the_content( $title ) {
   //return $title . '<p>Thanks for Reading!</p>';
 }
 
-
-
-
-
 class simosnap_irc_widget extends WP_Widget {
 
 	// constructor
@@ -798,13 +794,15 @@ function chatLogin(){
 
                         <div class="datadiv">
                 			<div>
-                            <div class="nickerror" style=""><i class="fa fa-exclamation-triangle"></i> Scegli un nickname!</div>
-                			<input id="nickinput" placeholder="Inserisci il tuo nickname ..." type="text" name="nick">
-
-                            <div class="nsnotify" id="nsnotify" style="">Il Nick scelto risulta registrato.</div>
-                            <div id="nspwdlabel" style="display:none">
-                    			<input id="nspwd" class="textbox" placeholder="Inserisci la password" type="password" name="password" value="" style="display:none;width:100%;">
-                			</div>
+                                <label>
+                                    <div class="nickerror" style=""><i class="fa fa-exclamation-triangle"></i> Scegli un nickname!</div>
+                        			<input id="nickinput" placeholder="Inserisci il tuo nickname ..." type="text" name="nick">
+            
+                                    <div class="nsnotify" id="nsnotify" style="">Il Nick scelto risulta registrato.</div>
+                                    <div id="nspwdlabel" style="display:none">
+                            			<input id="nspwd" class="textbox" placeholder="Inserisci la password" type="password" name="password" value="" style="display:none;width:100%;">
+                        			</div>
+                                </label>
                 			</div>
                 			<div class="chatasl">
                                 <label><input placeholder="Età" type="text" name="age"></label>
