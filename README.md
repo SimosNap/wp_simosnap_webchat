@@ -56,7 +56,7 @@ No, it's designed to work only with SimosNap IRC network API
 
 ### Where i can find support for this plugin ? ###
 
-On our geeks channel at ircs://irc.simosnap.com:6697/#geeks 
+On our #geeks channel at ircs://irc.simosnap.com:6697/#geeks 
 
 ## Screenshots ##
 
