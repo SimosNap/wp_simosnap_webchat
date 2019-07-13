@@ -231,20 +231,14 @@ class PageTemplater {
 
 	}
 
-	/**
-	 * Checks if the template is assigned to the page
-	 */
 	public function view_project_template( $template ) {
 
-		// Get global post
 		global $post;
 
-		// Return template if post is empty
 		if ( ! $post ) {
 			return $template;
 		}
 
-		// Return default template if we don't have a custom one defined
 		if ( ! isset( $this->templates[get_post_meta(
 			$post->ID, '_wp_page_template', true
 		)] ) ) {
@@ -255,14 +249,12 @@ class PageTemplater {
 			$post->ID, '_wp_page_template', true
 		);
 
-		// Just to be safe, we check if the file exist first
 		if ( file_exists( $file ) ) {
 			return $file;
 		} else {
 			echo $file;
 		}
 
-		// Return template
 		return $template;
 
 	}
