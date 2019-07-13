@@ -26,7 +26,6 @@ function popupform(url,windowname,target){
     }
 }
 
-
 function trim_whitespaces (str) {
     	return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 }
