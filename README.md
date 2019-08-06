@@ -30,7 +30,6 @@ Statistics are generated using the SimosNap IRC Network APIs.
 Features:
 
 - KiwiIRC login form
-- Online users stats
 - Responsive Layout
 
 ## Installation ##
